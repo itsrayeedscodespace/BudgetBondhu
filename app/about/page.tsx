@@ -34,18 +34,37 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-black">
-          <div className="container px-4 md:px-6">
+        {/* Header Section with Background Image */}
+        <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/about.jpg"
+              alt="About us background"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/70"></div>
+          </div>
+
+          <div className="container px-4 md:px-6 relative z-10">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-orange-400">About Budget Bondhu</h1>
-                <p className="max-w-[700px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-orange-400 drop-shadow-lg">
+                  About Us
+                </h1>
+                <p className="max-w-[700px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed drop-shadow-md">
                   Learn about our mission, vision, and the team behind Budget Bondhu.
                 </p>
               </div>
             </div>
+          </div>
+        </section>
 
-            <Tabs defaultValue="mission" className="mt-12">
+        {/* About Content Section */}
+        <section className="w-full py-12 md:py-16 bg-black">
+          <div className="container px-4 md:px-6">
+            <Tabs defaultValue="mission" className="mt-6">
               <TabsList className="grid w-full grid-cols-3 bg-zinc-800">
                 <TabsTrigger
                   value="mission"
