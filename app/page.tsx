@@ -8,17 +8,29 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        {/* Hero Section with Background Image */}
+        {/* Hero Section with Background Video */}
         <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
-          {/* Background Image */}
+          {/* Background Video */}
           <div className="absolute inset-0 z-0">
-            <Image
-              src="/placeholder.svg?height=800&width=1200"
-              alt="Financial education background"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-black/70"></div>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ filter: "brightness(1.5)" }}
+            >
+              <source src="/landing.mp4" type="video/mp4" />
+              {/* Fallback image if video doesn't load */}
+              <Image
+                src="/placeholder.svg?height=800&width=1200"
+                alt="Financial education background"
+                fill
+                className="object-cover"
+              />
+            </video>
+            {/* Additional overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/50"></div>
           </div>
 
           {/* Content */}
@@ -26,20 +38,23 @@ export default function Home() {
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_500px]">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white drop-shadow-lg">
                     Making Money Make Sense
                   </h1>
-                  <p className="max-w-[600px] text-orange-300 md:text-xl">
+                  <p className="max-w-[600px] text-orange-300 md:text-xl drop-shadow-md">
                     Fun and easy financial education for young minds. Learn about saving, spending, and growing your
                     money.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Link href="/learn">
-                    <Button className="bg-orange-400 text-black hover:bg-orange-300">Start Learning</Button>
+                    <Button className="bg-orange-400 text-black hover:bg-orange-300 shadow-lg">Start Learning</Button>
                   </Link>
                   <Link href="/games">
-                    <Button variant="outline" className="border-orange-400 text-orange-400 hover:bg-orange-400/10">
+                    <Button
+                      variant="outline"
+                      className="border-orange-400 text-orange-400 hover:bg-orange-400/10 backdrop-blur-sm"
+                    >
                       Play Games
                     </Button>
                   </Link>
@@ -50,7 +65,7 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900">
+        <section className="w-full py-8 md:py-16 lg:py-20 bg-zinc-900">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -84,7 +99,7 @@ export default function Home() {
                   <CreditCard className="h-10 w-10 text-orange-400" />
                   <div>
                     <h3 className="text-xl font-bold text-orange-400">Banking</h3>
-                    <p className="text-zinc-300">Understand how banks work and different account types.</p>
+                    <p className="text-zinc-300">Understand how banks work and account types.</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 rounded-lg bg-zinc-800 p-6">
@@ -100,7 +115,7 @@ export default function Home() {
         </section>
 
         {/* Featured Articles */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-black">
+        <section className="w-full py-8 md:py-16 lg:py-20 bg-black">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
               <div className="space-y-2">
@@ -194,7 +209,7 @@ export default function Home() {
         </section>
 
         {/* Workshops Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900">
+        <section className="w-full py-8 md:py-16 lg:py-20 bg-zinc-900">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -247,7 +262,7 @@ export default function Home() {
         </section>
 
         {/* Games Preview */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-black">
+        <section className="w-full py-8 md:py-16 lg:py-20 bg-black">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
