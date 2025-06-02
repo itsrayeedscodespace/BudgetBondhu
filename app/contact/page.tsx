@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -43,18 +44,37 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-black">
-          <div className="container px-4 md:px-6">
+        {/* Header Section with Background Image */}
+        <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/contact.jpg"
+              alt="Contact us background"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/70"></div>
+          </div>
+
+          <div className="container px-4 md:px-6 relative z-10">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-orange-400">Contact Us</h1>
-                <p className="max-w-[700px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-orange-400 drop-shadow-lg">
+                  Contact Us
+                </h1>
+                <p className="max-w-[700px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed drop-shadow-md">
                   Have questions or feedback? We'd love to hear from you.
                 </p>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="grid gap-6 mt-12 md:grid-cols-2">
+        {/* Contact Content Section */}
+        <section className="w-full py-12 md:py-16 bg-black">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-6 md:grid-cols-2">
               {/* Contact Form */}
               <Card className="bg-zinc-900 border-zinc-800 text-zinc-100">
                 <CardHeader>
