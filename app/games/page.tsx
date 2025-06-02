@@ -31,48 +31,38 @@ export default function GamesPage() {
       skills: ["Investing", "Risk Management", "Long-term Planning"],
       rating: 4.7,
     },
-    {
-      id: "entrepreneur-tycoon",
-      title: "Entrepreneur Tycoon",
-      description: "Start and grow your own business, manage resources, and become a successful entrepreneur.",
-      image: "/placeholder.svg?height=300&width=500",
-      skills: ["Business Management", "Strategy", "Financial Planning"],
-      rating: 4.9,
-    },
-    {
-      id: "savings-quest",
-      title: "Savings Quest",
-      description: "Embark on an adventure to save for different goals while overcoming spending temptations.",
-      image: "/placeholder.svg?height=300&width=500",
-      skills: ["Saving", "Goal Setting", "Delayed Gratification"],
-      rating: 4.6,
-    },
-    {
-      id: "crypto-explorer",
-      title: "Crypto Explorer",
-      description: "Learn about cryptocurrency and blockchain technology through an interactive adventure.",
-      image: "/placeholder.svg?height=300&width=500",
-      skills: ["Digital Currency", "Technology", "Security"],
-      rating: 4.4,
-    },
   ]
 
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-black">
-          <div className="container px-4 md:px-6">
+        {/* Header Section with Background Image */}
+        <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image src="/images/gamesland.jpg" alt="Gaming background" fill className="object-cover" />
+            <div className="absolute inset-0 bg-black/70"></div>
+          </div>
+
+          <div className="container px-4 md:px-6 relative z-10">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-orange-400">Financial Games</h1>
-                <p className="max-w-[700px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-orange-400 drop-shadow-lg">
+                  Play Games
+                </h1>
+                <p className="max-w-[700px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed drop-shadow-md">
                   Learn about money through fun and interactive games designed for children and teens.
                 </p>
               </div>
             </div>
+          </div>
+        </section>
 
+        {/* Games Grid Section */}
+        <section className="w-full py-12 md:py-16 bg-black">
+          <div className="container px-4 md:px-6">
             {/* Games Grid */}
-            <div className="grid gap-6 pt-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {games.map((game) => (
                 <Card key={game.id} className="bg-zinc-900 border-zinc-800 text-zinc-100 overflow-hidden">
                   <div className="relative">
