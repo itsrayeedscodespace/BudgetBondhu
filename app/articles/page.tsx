@@ -1,16 +1,21 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 export default function ArticlesPage() {
+  const { t } = useLanguage()
+
   // Sample articles data
   const articles = [
     {
       id: "what-is-money",
-      title: "What is Money?",
-      description: "Understanding the basics of currency",
+      title: t("whatIsMoney"),
+      description: t("whatIsMoneyDesc"),
       image: "/images/money2.png",
       excerpt: "Learn about the history of money and how it works in our modern world.",
       date: "May 10, 2023",
@@ -19,7 +24,7 @@ export default function ArticlesPage() {
       id: "saving-vs-spending",
       title: "Investing for the future",
       description: "Finding the right balance",
-      image:"/images/savings.png",
+      image: "/images/savings.png",
       excerpt: "Discover how to balance saving for the future while enjoying life today.",
       date: "June 15, 2023",
     },
@@ -71,9 +76,11 @@ export default function ArticlesPage() {
           <div className="container px-4 md:px-6 relative z-10">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-orange-400 drop-shadow-lg">Financial Articles</h1>
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-orange-400 drop-shadow-lg">
+                  {t("financialArticles")}
+                </h1>
                 <p className="max-w-[700px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed drop-shadow-md">
-                  Explore our collection of articles to learn about money, saving, and smart financial decisions.
+                  {t("financialArticlesDesc")}
                 </p>
               </div>
             </div>
@@ -107,7 +114,7 @@ export default function ArticlesPage() {
                   <CardFooter>
                     <Link href={`/articles/${article.id}`}>
                       <Button variant="link" className="text-orange-400 hover:text-orange-300 p-0">
-                        Read More <ChevronRight className="h-4 w-4 ml-1" />
+                        {t("readMore")} <ChevronRight className="h-4 w-4 ml-1" />
                       </Button>
                     </Link>
                   </CardFooter>

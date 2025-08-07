@@ -1,18 +1,23 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ExternalLink } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 export default function ResourcesPage() {
+  const { t } = useLanguage()
+
   // Bank resources data
   const banks = [
     {
       id: "brac-bank",
       name: "BRAC Bank",
       description: "Resources and programs for young savers",
-      logo: "/placeholder.svg?height=100&width=200",
+      logo: "/images/bank-logo.jpg",
       features: [
         "Youth savings accounts with no minimum balance",
         "Educational materials on financial literacy",
@@ -25,7 +30,7 @@ export default function ResourcesPage() {
       id: "prime-bank",
       name: "Prime Bank",
       description: "Financial education initiatives for children",
-      logo: "/placeholder.svg?height=100&width=200",
+      logo: "/images/bank-logo.jpg",
       features: [
         "Special savings accounts for minors",
         "Financial literacy workshops",
@@ -38,7 +43,7 @@ export default function ResourcesPage() {
       id: "city-bank",
       name: "City Bank",
       description: "Youth-focused banking solutions",
-      logo: "/placeholder.svg?height=100&width=200",
+      logo: "/images/bank-logo.jpg",
       features: [
         "Junior savings accounts",
         "Financial education resources",
@@ -53,23 +58,23 @@ export default function ResourcesPage() {
   const tools = [
     {
       id: "savings-calculator",
-      title: "Savings Calculator",
-      description: "See how your savings can grow over time",
-      image: "/placeholder.svg?height=200&width=300",
+      title: t("savingsCalculator"),
+      description: t("savingsCalculatorDesc"),
+      image: "/images/savings-calculator.jpg",
       link: "/tools/savings-calculator",
     },
     {
       id: "budget-template",
-      title: "Budget Template",
-      description: "Create your own personal budget",
-      image: "/placeholder.svg?height=200&width=300",
+      title: t("budgetTemplate"),
+      description: t("budgetTemplateDesc"),
+      image: "/images/budget-template.jpg",
       link: "/tools/budget-template",
     },
     {
       id: "goal-tracker",
-      title: "Goal Tracker",
-      description: "Track your progress toward savings goals",
-      image: "/placeholder.svg?height=200&width=300",
+      title: t("goalTracker"),
+      description: t("goalTrackerDesc"),
+      image: "/images/goal-tracker.jpg",
       link: "/tools/goal-tracker",
     },
   ]
@@ -81,12 +86,7 @@ export default function ResourcesPage() {
         <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/resources.jpg"
-              alt="Resources background"
-              fill
-              className="object-cover"
-            />
+            <Image src="/images/resources.jpg" alt="Resources background" fill className="object-cover" />
             <div className="absolute inset-0 bg-black/70"></div>
           </div>
 
@@ -94,10 +94,10 @@ export default function ResourcesPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-orange-400 drop-shadow-lg">
-                  Financial Resources
+                  {t("financialResources")}
                 </h1>
                 <p className="max-w-[700px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed drop-shadow-md">
-                  Explore our collection of resources to help you learn about money and develop good financial habits.
+                  {t("financialResourcesDesc")}
                 </p>
               </div>
             </div>
@@ -110,10 +110,10 @@ export default function ResourcesPage() {
             <Tabs defaultValue="banks" className="mt-6">
               <TabsList className="grid w-full grid-cols-2 bg-zinc-800">
                 <TabsTrigger value="banks" className="data-[state=active]:bg-orange-400 data-[state=active]:text-black">
-                  Bank Resources
+                  {t("bankResources")}
                 </TabsTrigger>
                 <TabsTrigger value="tools" className="data-[state=active]:bg-orange-400 data-[state=active]:text-black">
-                  Financial Tools
+                  {t("financialTools")}
                 </TabsTrigger>
               </TabsList>
 
@@ -125,7 +125,7 @@ export default function ResourcesPage() {
                       <CardHeader>
                         <div className="flex justify-center mb-4">
                           <Image
-                            src={bank.logo || "/placeholder.svg"}
+                            src={bank.logo || "/images/bank-logo.jpg"}
                             alt={`${bank.name} logo`}
                             width={200}
                             height={100}
@@ -148,11 +148,11 @@ export default function ResourcesPage() {
                       <CardFooter>
                         <Button
                           variant="outline"
-                          className="w-full border-orange-400 text-orange-400 hover:bg-orange-400/10"
+                          className="w-full border-orange-400 text-orange-400 hover:bg-orange-400/10 bg-transparent"
                           asChild
                         >
                           <Link href={bank.website} target="_blank" rel="noopener noreferrer">
-                            Visit Website <ExternalLink className="h-4 w-4 ml-2" />
+                            {t("visitWebsite")} <ExternalLink className="h-4 w-4 ml-2" />
                           </Link>
                         </Button>
                       </CardFooter>
@@ -172,7 +172,7 @@ export default function ResourcesPage() {
                       </CardHeader>
                       <CardContent>
                         <Image
-                          src={tool.image || "/placeholder.svg"}
+                          src={tool.image || "/images/savings-calculator.jpg"}
                           alt={tool.title}
                           width={300}
                           height={200}
@@ -181,7 +181,7 @@ export default function ResourcesPage() {
                       </CardContent>
                       <CardFooter>
                         <Button className="w-full bg-orange-400 text-black hover:bg-orange-300" asChild>
-                          <Link href={tool.link}>Use Tool</Link>
+                          <Link href={tool.link}>{t("useTools")}</Link>
                         </Button>
                       </CardFooter>
                     </Card>

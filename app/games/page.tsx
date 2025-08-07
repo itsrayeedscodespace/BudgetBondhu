@@ -1,33 +1,38 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Star } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 export default function GamesPage() {
+  const { t } = useLanguage()
+
   // Games data
   const games = [
     {
       id: "budget-hero",
-      title: "Budget Hero",
-      description: "Create a budget, make spending decisions, and see if you can meet your financial goals.",
-      image: "/placeholder.svg?height=300&width=500",
+      title: t("budgetHero"),
+      description: t("budgetHeroGameDesc"),
+      image: "/images/budget-hero-game.jpg",
       skills: ["Budgeting", "Decision Making", "Planning"],
       rating: 4.8,
     },
     {
       id: "money-match",
-      title: "Money Match",
-      description: "Test your knowledge of different currencies and their values in this matching game.",
-      image: "/placeholder.svg?height=300&width=500",
+      title: t("moneyMatch"),
+      description: t("moneyMatchDesc"),
+      image: "/images/money-match-game.jpg",
       skills: ["Currency Recognition", "Memory", "Math"],
       rating: 4.5,
     },
     {
       id: "investment-adventure",
-      title: "Investment Adventure",
-      description: "Learn about investing by managing a virtual portfolio and watching it grow over time.",
-      image: "/placeholder.svg?height=300&width=500",
+      title: t("investmentAdventure"),
+      description: t("investmentAdventureDesc"),
+      image: "/images/investment-game.jpg",
       skills: ["Investing", "Risk Management", "Long-term Planning"],
       rating: 4.7,
     },
@@ -48,10 +53,10 @@ export default function GamesPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-orange-400 drop-shadow-lg">
-                  Play Games
+                  {t("playGamesTitle")}
                 </h1>
                 <p className="max-w-[700px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed drop-shadow-md">
-                  Learn about money through fun and interactive games designed for children and teens.
+                  {t("playGamesDesc")}
                 </p>
               </div>
             </div>
@@ -93,7 +98,7 @@ export default function GamesPage() {
                   </CardContent>
                   <CardFooter>
                     <Button className="w-full bg-orange-400 text-black hover:bg-orange-300" asChild>
-                      <Link href={`/games/${game.id}`}>Play Now</Link>
+                      <Link href={`/games/${game.id}`}>{t("playNow")}</Link>
                     </Button>
                   </CardFooter>
                 </Card>

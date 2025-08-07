@@ -1,10 +1,15 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronRight, CreditCard, Lightbulb, PiggyBank, Wallet, Users, Calendar, Phone } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 export default function Home() {
+  const { t } = useLanguage()
+
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
@@ -20,7 +25,7 @@ export default function Home() {
               className="absolute inset-0 w-full h-full object-cover"
               style={{ filter: "brightness(1.5)" }}
             >
-              <source src="/landing.mp4" type="video/mp4" />
+              <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_L1nJni8MnbkSnvAQigLn4Tm7VCZE/6EoGpx41OhhPrAH1a1Pcm7/public/landing.mp4" type="video/mp4" />
               {/* Fallback image if video doesn't load */}
               <Image
                 src="/placeholder.svg?height=800&width=1200"
@@ -39,23 +44,22 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white drop-shadow-lg">
-                    Making Money Make Sense
+                    {t("heroTitle")}
                   </h1>
-                  <p className="max-w-[600px] text-orange-300 md:text-xl drop-shadow-md">
-                    Fun and easy financial education for young minds. Learn about saving, spending, and growing your
-                    money.
-                  </p>
+                  <p className="max-w-[600px] text-orange-300 md:text-xl drop-shadow-md">{t("heroSubtitle")}</p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Link href="/learn">
-                    <Button className="bg-orange-400 text-black hover:bg-orange-300 shadow-lg">Start Learning</Button>
+                    <Button className="bg-orange-400 text-black hover:bg-orange-300 shadow-lg">
+                      {t("startLearning")}
+                    </Button>
                   </Link>
                   <Link href="/games">
                     <Button
                       variant="outline"
-                      className="border-orange-400 text-orange-400 hover:bg-orange-400/10 backdrop-blur-sm"
+                      className="border-orange-400 text-orange-400 hover:bg-orange-400/10 backdrop-blur-sm bg-transparent"
                     >
-                      Play Games
+                      {t("playGames")}
                     </Button>
                   </Link>
                 </div>
@@ -70,10 +74,10 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-orange-400">
-                  Learn Financial Skills for Life
+                  {t("learnFinancialSkills")}
                 </h2>
                 <p className="max-w-[900px] text-zinc-200 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Discover the tools and knowledge you need to make smart money decisions now and in the future.
+                  {t("learnFinancialSkillsDesc")}
                 </p>
               </div>
             </div>
@@ -82,15 +86,15 @@ export default function Home() {
                 <div className="flex items-center gap-4 rounded-lg bg-zinc-800 p-6">
                   <PiggyBank className="h-10 w-10 text-orange-400" />
                   <div>
-                    <h3 className="text-xl font-bold text-orange-400">Saving Basics</h3>
-                    <p className="text-zinc-300">Learn how to save money and why it's important.</p>
+                    <h3 className="text-xl font-bold text-orange-400">{t("savingBasics")}</h3>
+                    <p className="text-zinc-300">{t("savingBasicsDesc")}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 rounded-lg bg-zinc-800 p-6">
                   <Wallet className="h-10 w-10 text-orange-400" />
                   <div>
-                    <h3 className="text-xl font-bold text-orange-400">Budgeting</h3>
-                    <p className="text-zinc-300">Create your own budget and track your spending.</p>
+                    <h3 className="text-xl font-bold text-orange-400">{t("budgeting")}</h3>
+                    <p className="text-zinc-300">{t("budgetingDesc")}</p>
                   </div>
                 </div>
               </div>
@@ -98,15 +102,15 @@ export default function Home() {
                 <div className="flex items-center gap-4 rounded-lg bg-zinc-800 p-6">
                   <CreditCard className="h-10 w-10 text-orange-400" />
                   <div>
-                    <h3 className="text-xl font-bold text-orange-400">Banking</h3>
-                    <p className="text-zinc-300">Understand how banks work and account types.</p>
+                    <h3 className="text-xl font-bold text-orange-400">{t("banking")}</h3>
+                    <p className="text-zinc-300">{t("bankingDesc")}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 rounded-lg bg-zinc-800 p-6">
                   <Lightbulb className="h-10 w-10 text-orange-400" />
                   <div>
-                    <h3 className="text-xl font-bold text-orange-400">Smart Spending</h3>
-                    <p className="text-zinc-300">Learn to make wise choices with your money.</p>
+                    <h3 className="text-xl font-bold text-orange-400">{t("smartSpending")}</h3>
+                    <p className="text-zinc-300">{t("smartSpendingDesc")}</p>
                   </div>
                 </div>
               </div>
@@ -120,23 +124,23 @@ export default function Home() {
             <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-orange-400">
-                  Featured Articles
+                  {t("featuredArticles")}
                 </h2>
-                <p className="max-w-[600px] text-zinc-400 md:text-xl">Read our featured content on financial topics.</p>
+                <p className="max-w-[600px] text-zinc-400 md:text-xl">{t("featuredArticlesDesc")}</p>
               </div>
               <Link href="/articles" className="flex items-center gap-2 text-orange-400 hover:text-orange-300">
-                View all articles <ChevronRight className="h-4 w-4" />
+                {t("viewAllArticles")} <ChevronRight className="h-4 w-4" />
               </Link>
             </div>
             <div className="grid gap-6 pt-8 md:grid-cols-2 lg:grid-cols-3">
               <Card className="bg-zinc-900 border-zinc-800 text-zinc-100">
                 <CardHeader>
-                  <CardTitle className="text-orange-400">What is Money?</CardTitle>
-                  <CardDescription className="text-zinc-400">Understanding the basics of currency</CardDescription>
+                  <CardTitle className="text-orange-400">{t("whatIsMoney")}</CardTitle>
+                  <CardDescription className="text-zinc-400">{t("whatIsMoneyDesc")}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Image
-                    src="/placeholder.svg?height=200&width=400"
+                    src="/images/money-concept.jpg"
                     alt="Money illustration"
                     width={400}
                     height={200}
@@ -149,19 +153,19 @@ export default function Home() {
                 <CardFooter>
                   <Link href="/articles/what-is-money">
                     <Button variant="link" className="text-orange-400 hover:text-orange-300 p-0">
-                      Read More <ChevronRight className="h-4 w-4 ml-1" />
+                      {t("readMore")} <ChevronRight className="h-4 w-4 ml-1" />
                     </Button>
                   </Link>
                 </CardFooter>
               </Card>
               <Card className="bg-zinc-900 border-zinc-800 text-zinc-100">
                 <CardHeader>
-                  <CardTitle className="text-orange-400">Saving vs. Spending</CardTitle>
-                  <CardDescription className="text-zinc-400">Finding the right balance</CardDescription>
+                  <CardTitle className="text-orange-400">{t("savingVsSpending")}</CardTitle>
+                  <CardDescription className="text-zinc-400">{t("savingVsSpendingDesc")}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Image
-                    src="/placeholder.svg?height=200&width=400"
+                    src="/images/saving-spending.jpg"
                     alt="Saving illustration"
                     width={400}
                     height={200}
@@ -174,19 +178,19 @@ export default function Home() {
                 <CardFooter>
                   <Link href="/articles/saving-vs-spending">
                     <Button variant="link" className="text-orange-400 hover:text-orange-300 p-0">
-                      Read More <ChevronRight className="h-4 w-4 ml-1" />
+                      {t("readMore")} <ChevronRight className="h-4 w-4 ml-1" />
                     </Button>
                   </Link>
                 </CardFooter>
               </Card>
               <Card className="bg-zinc-900 border-zinc-800 text-zinc-100">
                 <CardHeader>
-                  <CardTitle className="text-orange-400">Mobile Banking 101</CardTitle>
-                  <CardDescription className="text-zinc-400">Banking in the digital age</CardDescription>
+                  <CardTitle className="text-orange-400">{t("mobileBanking101")}</CardTitle>
+                  <CardDescription className="text-zinc-400">{t("mobileBanking101Desc")}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Image
-                    src="/placeholder.svg?height=200&width=400"
+                    src="/images/mobile-banking.jpg"
                     alt="Mobile banking illustration"
                     width={400}
                     height={200}
@@ -199,7 +203,7 @@ export default function Home() {
                 <CardFooter>
                   <Link href="/articles/mobile-banking-101">
                     <Button variant="link" className="text-orange-400 hover:text-orange-300 p-0">
-                      Read More <ChevronRight className="h-4 w-4 ml-1" />
+                      {t("readMore")} <ChevronRight className="h-4 w-4 ml-1" />
                     </Button>
                   </Link>
                 </CardFooter>
@@ -214,11 +218,10 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-orange-400">
-                  Interactive Workshops
+                  {t("interactiveWorkshops")}
                 </h2>
                 <p className="max-w-[900px] text-zinc-200 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join our engaging workshops designed specifically for high school students to build practical
-                  financial skills.
+                  {t("interactiveWorkshopsDesc")}
                 </p>
               </div>
             </div>
@@ -227,30 +230,33 @@ export default function Home() {
                 <div className="flex items-center gap-4 rounded-lg bg-zinc-800 p-6">
                   <Users className="h-10 w-10 text-orange-400" />
                   <div>
-                    <h3 className="text-xl font-bold text-orange-400">Group Learning</h3>
-                    <p className="text-zinc-300">Interactive sessions with peers and expert facilitators.</p>
+                    <h3 className="text-xl font-bold text-orange-400">{t("groupLearning")}</h3>
+                    <p className="text-zinc-300">{t("groupLearningDesc")}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 rounded-lg bg-zinc-800 p-6">
                   <Calendar className="h-10 w-10 text-orange-400" />
                   <div>
-                    <h3 className="text-xl font-bold text-orange-400">Flexible Scheduling</h3>
-                    <p className="text-zinc-300">Weekend and after-school sessions to fit your schedule.</p>
+                    <h3 className="text-xl font-bold text-orange-400">{t("flexibleScheduling")}</h3>
+                    <p className="text-zinc-300">{t("flexibleSchedulingDesc")}</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button className="bg-orange-400 text-black hover:bg-orange-300">Workshop Package</Button>
+                  <Button className="bg-orange-400 text-black hover:bg-orange-300">{t("workshopPackage")}</Button>
                   <Link href="/contact">
-                    <Button variant="outline" className="border-orange-400 text-orange-400 hover:bg-orange-400/10">
+                    <Button
+                      variant="outline"
+                      className="border-orange-400 text-orange-400 hover:bg-orange-400/10 bg-transparent"
+                    >
                       <Phone className="h-4 w-4 mr-2" />
-                      Contact Us
+                      {t("contactUs")}
                     </Button>
                   </Link>
                 </div>
               </div>
               <div className="rounded-lg overflow-hidden border-2 border-orange-400">
                 <Image
-                  src="/placeholder.svg?height=300&width=500"
+                  src="/images/workshop-students.jpg"
                   alt="Students in workshop session"
                   width={500}
                   height={300}
@@ -267,27 +273,26 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-orange-400">
-                  Learn Through Play
+                  {t("learnThroughPlay")}
                 </h2>
                 <p className="max-w-[900px] text-zinc-200 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Our fun financial games make learning about money exciting!
+                  {t("learnThroughPlayDesc")}
                 </p>
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2">
               <div className="flex flex-col space-y-4">
-                <h3 className="text-2xl font-bold text-orange-400">Budget Hero</h3>
-                <p className="text-zinc-300">
-                  Create a budget, make spending decisions, and see if you can meet your financial goals in this
-                  interactive game.
-                </p>
+                <h3 className="text-2xl font-bold text-orange-400">{t("budgetHero")}</h3>
+                <p className="text-zinc-300">{t("budgetHeroDesc")}</p>
                 <Link href="/games/budget-hero">
-                  <Button className="bg-orange-400 text-black hover:bg-orange-300 w-full sm:w-auto">Play Now</Button>
+                  <Button className="bg-orange-400 text-black hover:bg-orange-300 w-full sm:w-auto">
+                    {t("playNow")}
+                  </Button>
                 </Link>
               </div>
               <div className="rounded-lg overflow-hidden border-2 border-orange-400">
                 <Image
-                  src="/placeholder.svg?height=300&width=500"
+                  src="/images/budget-hero-preview.jpg"
                   alt="Budget Hero game screenshot"
                   width={500}
                   height={300}

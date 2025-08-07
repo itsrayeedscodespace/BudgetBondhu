@@ -1,8 +1,13 @@
+"use client"
+
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useLanguage } from "@/lib/language-context"
 
 export default function AboutPage() {
+  const { t } = useLanguage()
+
   // Team members data
   const teamMembers = [
     {
@@ -38,12 +43,7 @@ export default function AboutPage() {
         <section className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/about.jpg"
-              alt="About us background"
-              fill
-              className="object-cover"
-            />
+            <Image src="/images/about-hero.jpg" alt="About us background" fill className="object-cover" />
             <div className="absolute inset-0 bg-black/70"></div>
           </div>
 
@@ -51,10 +51,10 @@ export default function AboutPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-orange-400 drop-shadow-lg">
-                  About Us
+                  {t("aboutUs")}
                 </h1>
                 <p className="max-w-[700px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed drop-shadow-md">
-                  Learn about our mission, vision, and the team behind Budget Bondhu.
+                  {t("aboutUsDesc")}
                 </p>
               </div>
             </div>
@@ -70,16 +70,16 @@ export default function AboutPage() {
                   value="mission"
                   className="data-[state=active]:bg-orange-400 data-[state=active]:text-black"
                 >
-                  Our Mission
+                  {t("ourMission")}
                 </TabsTrigger>
                 <TabsTrigger
                   value="vision"
                   className="data-[state=active]:bg-orange-400 data-[state=active]:text-black"
                 >
-                  Our Vision
+                  {t("ourVision")}
                 </TabsTrigger>
                 <TabsTrigger value="team" className="data-[state=active]:bg-orange-400 data-[state=active]:text-black">
-                  Our Team
+                  {t("ourTeam")}
                 </TabsTrigger>
               </TabsList>
 
@@ -87,7 +87,7 @@ export default function AboutPage() {
               <TabsContent value="mission" className="mt-6">
                 <div className="grid gap-6 lg:grid-cols-2">
                   <div>
-                    <h2 className="text-2xl font-bold text-orange-400 mb-4">Our Mission</h2>
+                    <h2 className="text-2xl font-bold text-orange-400 mb-4">{t("ourMission")}</h2>
                     <div className="space-y-4 text-zinc-300">
                       <p>
                         At Budget Bondhu, our mission is to empower children and teenagers with the knowledge, skills,
@@ -108,7 +108,7 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/placeholder.svg?height=400&width=600"
+                      src="/images/children-learning.jpg"
                       alt="Children learning about finance"
                       width={600}
                       height={400}
@@ -123,7 +123,7 @@ export default function AboutPage() {
                 <div className="grid gap-6 lg:grid-cols-2">
                   <div className="flex items-center justify-center order-last lg:order-first">
                     <Image
-                      src="/placeholder.svg?height=400&width=600"
+                      src="/images/future-education.jpg"
                       alt="Future of financial education"
                       width={600}
                       height={400}
@@ -131,7 +131,7 @@ export default function AboutPage() {
                     />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-orange-400 mb-4">Our Vision</h2>
+                    <h2 className="text-2xl font-bold text-orange-400 mb-4">{t("ourVision")}</h2>
                     <div className="space-y-4 text-zinc-300">
                       <p>
                         We envision a world where every child has the opportunity to develop strong financial literacy
@@ -160,11 +160,8 @@ export default function AboutPage() {
               {/* Team Tab */}
               <TabsContent value="team" className="mt-6">
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-orange-400 text-center">Meet Our Team</h2>
-                  <p className="text-zinc-300 text-center max-w-3xl mx-auto">
-                    Our dedicated team of financial educators, content creators, and technology experts are passionate
-                    about making financial education accessible and engaging for children.
-                  </p>
+                  <h2 className="text-2xl font-bold text-orange-400 text-center">{t("meetOurTeam")}</h2>
+                  <p className="text-zinc-300 text-center max-w-3xl mx-auto">{t("meetOurTeamDesc")}</p>
 
                   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                     {teamMembers.map((member) => (
@@ -172,7 +169,7 @@ export default function AboutPage() {
                         <CardContent className="p-4">
                           <div className="aspect-square overflow-hidden rounded-full mb-4">
                             <Image
-                              src={member.image || "/placeholder.svg"}
+                              src="/images/team-member.jpg"
                               alt={member.name}
                               width={300}
                               height={300}
@@ -194,38 +191,29 @@ export default function AboutPage() {
             <div className="mt-16">
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
-                  <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl text-orange-400">Our Core Values</h2>
-                  <p className="max-w-[700px] text-zinc-400 md:text-lg">
-                    The principles that guide everything we do at Budget Bondhu.
-                  </p>
+                  <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl text-orange-400">
+                    {t("ourCoreValues")}
+                  </h2>
+                  <p className="max-w-[700px] text-zinc-400 md:text-lg">{t("ourCoreValuesDesc")}</p>
                 </div>
               </div>
 
               <div className="grid gap-6 mt-8 md:grid-cols-2 lg:grid-cols-4">
                 <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg">
-                  <h3 className="text-xl font-bold text-orange-400 mb-2">Accessibility</h3>
-                  <p className="text-zinc-300">
-                    We believe financial education should be available to all children, regardless of background or
-                    circumstances.
-                  </p>
+                  <h3 className="text-xl font-bold text-orange-400 mb-2">{t("accessibility")}</h3>
+                  <p className="text-zinc-300">{t("accessibilityDesc")}</p>
                 </div>
                 <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg">
-                  <h3 className="text-xl font-bold text-orange-400 mb-2">Engagement</h3>
-                  <p className="text-zinc-300">
-                    Learning about money should be fun, interactive, and relevant to children's lives.
-                  </p>
+                  <h3 className="text-xl font-bold text-orange-400 mb-2">{t("engagement")}</h3>
+                  <p className="text-zinc-300">{t("engagementDesc")}</p>
                 </div>
                 <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg">
-                  <h3 className="text-xl font-bold text-orange-400 mb-2">Innovation</h3>
-                  <p className="text-zinc-300">
-                    We continuously explore new ways to make financial education more effective and engaging.
-                  </p>
+                  <h3 className="text-xl font-bold text-orange-400 mb-2">{t("innovation")}</h3>
+                  <p className="text-zinc-300">{t("innovationDesc")}</p>
                 </div>
                 <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-lg">
-                  <h3 className="text-xl font-bold text-orange-400 mb-2">Empowerment</h3>
-                  <p className="text-zinc-300">
-                    We aim to build confidence and independence in young people's financial decision-making.
-                  </p>
+                  <h3 className="text-xl font-bold text-orange-400 mb-2">{t("empowerment")}</h3>
+                  <p className="text-zinc-300">{t("empowermentDesc")}</p>
                 </div>
               </div>
             </div>
